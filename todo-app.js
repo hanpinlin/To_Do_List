@@ -24,9 +24,7 @@ const todos = [{
 // })
 
 
-const incompleteTodos = todos.filter(function (todo) {
-    return !todo.completed
-})
+
 
 
 
@@ -41,16 +39,17 @@ const filters ={
 // a function to render the to-do list
 const renderTodos = function(todos, filters){
 
- // first need to find the to-do items that match with the serch text
-
-    const filteredTodos = todos.filter(function (todo) {
+    // first need to find the to-do items that match with the serch text
+    const filterTodos = todos.filter(function (todo) {
         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
         const hideCompletedMatch = !filters.hideCompleted || !todo.completed
 
         return searchTextMatch && hideCompletedMatch
     })
 
-  
+    const incompleteTodos = todos.filter(function (todo) {
+        return !todo.completed
+    })
 
     // remove the duplicate to-do list in div
     document.querySelector('#notes').innerHTML = ''
